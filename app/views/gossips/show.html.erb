@@ -1,2 +1,60 @@
-<h1>Gossips#show</h1>
-<p>Find me in app/views/gossips/show.html.erb</p>
+    <div class="container my-5">
+      <div class="row">
+          <div class="col-1">
+          </div>
+
+          <div class="col-10">
+
+
+            <div class="card align-items-center" >
+              <img class="card-img-top" src="https://images.unsplash.com/photo-1482356432770-3a99f07aba35?ixlib=rb-1.2.1&ix@id=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80"  alt="Card image cap">
+              <div class="card-body">
+                <h1 class="card-title">Potin d'id <%= :id.to_s %></h1>
+                <p class="card-text">Son auteur : <%= @gossip.author.user_name %> // Son contenu : <%= @gossip.text %></p>
+                <p><a class="card-text" href="/"> Lien pour revenir à la page d'accueil</a></p>
+                 <p><a class="card-text" href="/@gossips/<%= @id %>/edit/"> Pour éditer le potin, c'est ici</a></p>
+              </div>
+            </div>
+ 
+
+            <div class="card-body">
+              <a href="/@comments-of-@gossip-<%= @id %>/new/" class="card-link">Crée un commentaire !</a>
+            </div>
+
+          </div>
+
+          <div class="col-1">
+          </div>
+      </div>
+    </div>
+
+     <div class="container my-5">
+      <div class="row">
+          <div class="col-1">
+          </div>
+
+          <div class="col-10">
+
+            <ul class="list-group">
+              <li class="list-group-item d-flex justify-content-between align-items-center">
+                <strong> Commentaires </strong>
+                <span class="badge badge-primary badge-pill"> <%= @comments.length %></span>
+              </li>
+        
+              <% @comments.each_with_index do |comment, index| %>
+              <li class="list-group-item d-flex justify-content-between align-items-center">
+                <%= comment.text %>
+                
+                <span class="badge badge-primary badge-pill">par <%= comment.author.user_name %></span>
+              </li>
+              <% end %>
+            </ul>
+
+          </div>
+
+          <div class="col-1">
+          </div>
+        </div>
+      </div>
+
+

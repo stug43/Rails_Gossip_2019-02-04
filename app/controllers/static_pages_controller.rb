@@ -1,7 +1,7 @@
-class StaticPagesController < ApplicationController
-  def contact
-  end
+# frozen_string_literal: true
 
-  def team
-  end
+class StaticPagesController < ApplicationController
+  def contact; end
+
+  def team; end
 end
