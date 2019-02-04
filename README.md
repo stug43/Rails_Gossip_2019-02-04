@@ -11,5 +11,5 @@
 <li>go to 'http://localhost:3000/'</li></ol>
 <h2> :seedling: Devs</h2>
 <p>Thibaut Miquel</p>
-<p>Auguste_ng<sub><sub><sub><sub>(README AUTHOR, yay !</sub></sub></sub></sub></p>
+<p>Auguste_ng<sub><sub><sub><sub><sub><sub>(README AUTHOR, yay !)</sub></sub></sub></sub></sub></sub></p>
 
