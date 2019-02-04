@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 FactoryBot.define do
   factory :commentary do
-    text { "MyText" }
+    text { 'MyText' }
   end
 end

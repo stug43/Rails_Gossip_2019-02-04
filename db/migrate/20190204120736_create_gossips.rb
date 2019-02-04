@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 class CreateGossips < ActiveRecord::Migration[5.2]
   def change
     create_table :gossips do |t|
-			t.belongs_to :author, index: true
+      t.belongs_to :author, index: true
       t.string :title
       t.text :text
 
