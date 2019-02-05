@@ -33,8 +33,7 @@ class GossipsController < ApplicationController
 
   # Méthode qui récupère le potin concerné et l'envoie à la view show (show.html.erb) pour affichage
   def show
-    offset = Gossip.first.id
-    @gossip = Gossip.find((offset + :id.to_s.to_i).to_s)
+    @gossip = Gossip.find("#{params[:id]}")
     @gossips = Gossip.all
     @id = :id.to_s
     @comments = @gossip.commentaries
