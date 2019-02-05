@@ -5,18 +5,16 @@ class GossipsController < ApplicationController
   def index
     @gossips = Gossip.all
   end
-	
-	
-def search_post
-   if Gossip.include_id?(params[:id].to_s.to_i)  
-     redirect_to "/gossips/#{params[:id].to_s}"
-   else
-     redirect_to "/error_404"
+
+  def search_post
+    if Gossip.include_id?(params[:id].to_s.to_i)
+      redirect_to "/gossips/#{params[:id]}"
+    else
+      redirect_to '/error_404'
+    end
    end
- end
 
   def search; end
-
 
   # Méthode qui crée un potin vide et l'envoie une view qui affiche le formulaire pour 'le remplir' (new.html.erb)
   def new; end
@@ -47,7 +45,7 @@ def search_post
 
   # Méthode qui récupère le potin concerné et l'envoie à la view show (show.html.erb) pour affichage
   def show
-    @gossip = Gossip.find("#{params[:id]}")
+    @gossip = Gossip.find(params[:id].to_s)
     @gossips = Gossip.all
     @id = :id.to_s
     @comments = @gossip.commentaries
