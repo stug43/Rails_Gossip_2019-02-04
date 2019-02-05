@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
 class User < ApplicationRecord
-  has_many :gossips, foreign_key: 'author_id', class_name: 'Gossip'
-  has_many :commentaries, foreign_key: 'author_id', class_name: 'Commentary'
-  has_many :sub_commentaries, foreign_key: 'author_id', class_name: 'SubCommentary'
+  has_many :gossips, foreign_key: 'author_id'
+  has_many :commentaries, foreign_key: 'author_id'
+  has_many :sub_commentaries, foreign_key: 'author_id'
   has_many :likes, foreign_key: 'author_id', class_name: 'Like'
   validates :first_name, length: { minimum: 3 }
   validates :last_name, length: { minimum: 3 }

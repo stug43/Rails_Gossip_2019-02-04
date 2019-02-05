@@ -1,33 +1,37 @@
 # frozen_string_literal: true
 
 class GossipsController < ApplicationController
+  # Méthode qui récupère tous les potins et les envoie à la view index (index.html.erb) pour affichage
   def index
     @gossips = Gossip.all
   end
-	
-	def search
-	end
-	
-	def search_post
-		redirect_to "/gossips/#{params[:id]}"
-	end
 
-  # GET return an HTML form for creating a new photo
+  def search; end
+
+  def search_post
+    redirect_to "/gossips/#{params[:id]}"
+  end
+
+  # Méthode qui crée un potin vide et l'envoie une view qui affiche le formulaire pour 'le remplir' (new.html.erb)
   def new; end
 
   # POST create a new photo
   def create
-#    my_user = User.create(first_name: params['first_name'],
-#                          last_name: params['last_name'],
-#                          email: params['email'],
-#                          age: params['age'],
-#                          user_name: params['user_name'])
- #   Gossip.create(author: my_user,
-#                  title: params['title'],
- #                 text: params['text'])
+    # Méthode qui créé un potin à partir du contenu du formulaire de new.html.erb, soumis par l'utilisateur
+    # pour info, le contenu de ce formulaire sera accessible dans le hash params (ton meilleur pote)
+    # Une fois la création faite, on redirige généralement vers la méthode show (pour afficher le potin créé)
+
+    #    my_user = User.create(first_name: params['first_name'],
+    #                          last_name: params['last_name'],
+    #                          email: params['email'],
+    #                          age: params['age'],
+    #                          user_name: params['user_name'])
+    #   Gossip.create(author: my_user,
+    #                  title: params['title'],
+    #                 text: params['text'])
   end
 
-  # GET display a specific photo
+  # Méthode qui récupère le potin concerné et l'envoie à la view show (show.html.erb) pour affichage
   def show
     offset = Gossip.first.id
     @gossip = Gossip.find((offset + :id.to_s.to_i).to_s)
@@ -37,12 +41,17 @@ class GossipsController < ApplicationController
   end
 
   # GET return an HTML form for editing a photo
+  # Méthode qui met à jour le potin à partir du contenu du formulaire de edit.html.erb, soumis par l'utilisateur
+  # pour info, le contenu de ce formulaire sera accessible dans le hash params
+  # Une fois la modification faite, on redirige généralement vers la méthode show (pour afficher le potin modifié)
+
   def update
     @gossip = Gossip.find(:id.to_s)
     @id = id.to_s
   end
 
   # PATCH/PUT update a specific photo
+  # Méthode qui récupère le potin concerné et l'envoie à la view edit (edit.html.erb) pour affichage dans un formulaire d'édition
   def edit
     gossip = Gossip.find(:id.to_s)
     gossip.title = params['title']
@@ -50,6 +59,9 @@ class GossipsController < ApplicationController
   end
 
   # DELETE delete a specific photo
+  # Méthode qui récupère le potin concerné et le détruit en base
+  # Une fois la suppression faite, on redirige généralement vers la méthode index (pour afficher la liste à jour)
+
   def delete; end
 end
 

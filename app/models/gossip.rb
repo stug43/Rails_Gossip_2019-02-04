@@ -6,5 +6,4 @@ class Gossip < ApplicationRecord
   has_many :sub_commentaries, through: :commentaries, dependent: :destroy
   validates :author, presence: true
   validates :title, presence: true
-   
 end
