@@ -1,20 +1,3 @@
-# frozen_string_literal: true
-
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
-
 Rails.application.eager_load!
 models_array = [User, Gossip, Commentary, SubCommentary, Like]
 # Sets the locale to "France":
@@ -26,9 +9,19 @@ puts
 models_array.each(&:destroy_all)
 puts 'Effectué'
 puts
+puts 'Reinitialisation des index  de chaque table à 1'
+puts
+ActiveRecord::Base.connection.tables.each do |t|
+  ActiveRecord::Base.connection.reset_pk_sequence!(t)
+end
+puts '-' * 50
+puts
+puts 'Effectué'
+puts
 puts "Création de tables de données pour #{models_array.join(' ')}"
 puts '-' * 50
 puts
+
 
 models_items_count = Hash[ [['User', 20], ['Gossip', 50],
                             ['Commentary', 100], ['SubCommentary', 40], ['Like', 300]] ]

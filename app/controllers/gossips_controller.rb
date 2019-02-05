@@ -9,7 +9,7 @@ class GossipsController < ApplicationController
 	end
 	
 	def search_post
-		redirect_to "/gossips/#{params[:id]}"
+		(Gossip.include_id?(:id.to_s.to_i) ? redirect_to "/gossips/#{params[:id].to_s}" : redirect_to "/error_404" )
 	end
 
   # GET return an HTML form for creating a new photo
@@ -17,20 +17,19 @@ class GossipsController < ApplicationController
 
   # POST create a new photo
   def create
-#    my_user = User.create(first_name: params['first_name'],
-#                          last_name: params['last_name'],
-#                          email: params['email'],
-#                          age: params['age'],
-#                          user_name: params['user_name'])
- #   Gossip.create(author: my_user,
-#                  title: params['title'],
- #                 text: params['text'])
+    my_user = User.create(first_name: params['first_name'],
+                          last_name: params['last_name'],
+                          email: params['email'],
+                          age: params['age'],
+                          user_name: params['user_name'])
+    Gossip.create(author: my_user,
+                  title: params['title'],
+                  text: params['text'])
   end
 
   # GET display a specific photo
   def show
-    offset = Gossip.first.id
-    @gossip = Gossip.find((offset + :id.to_s.to_i).to_s)
+    @gossip = Gossip.find("#{params[:id]}")
     @gossips = Gossip.all
     @id = :id.to_s
     @comments = @gossip.commentaries

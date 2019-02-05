@@ -9,7 +9,7 @@
             <div class="card align-items-center" >
               <img class="card-img-top" src="https://images.unsplash.com/photo-1482356432770-3a99f07aba35?ixlib=rb-1.2.1&ix@id=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80"  alt="Card image cap">
               <div class="card-body">
-                <h1 class="card-title">Potin d'id <%= :id.to_s %></h1>
+                <h1 class="card-title">Potin d'id <%= params[:id] %></h1>
                 <p class="card-text">Son auteur : <%= @gossip.author.user_name %> // Son contenu : <%= @gossip.text %></p>
                 <p><a class="card-text" href="/"> Lien pour revenir à la page d'accueil</a></p>
                  <p><a class="card-text" href="/@gossips/<%= @id %>/edit/"> Pour éditer le potin, c'est ici</a></p>

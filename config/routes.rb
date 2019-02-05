@@ -8,4 +8,5 @@ Rails.application.routes.draw do
 	get '/search', to: 'gossips#search'
 	post '/search', to: 'gossips#search_post'
 	get '/gossips/:id', to: 'gossips#show'
+	get '/error_404', to: 'static_pages#error'
 end
