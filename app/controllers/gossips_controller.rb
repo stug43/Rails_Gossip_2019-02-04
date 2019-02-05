@@ -4,20 +4,27 @@ class GossipsController < ApplicationController
   def index
     @gossips = Gossip.all
   end
+	
+	def search
+	end
+	
+	def search_post
+		redirect_to "/gossips/#{params[:id]}"
+	end
 
   # GET return an HTML form for creating a new photo
   def new; end
 
   # POST create a new photo
   def create
-    my_user = User.create(first_name: params['first_name'],
-                          last_name: params['last_name'],
-                          email: params['email'],
-                          age: params['age'],
-                          user_name: params['user_name'])
-    Gossip.create(author: my_user,
-                  title: params['title'],
-                  text: params['text'])
+#    my_user = User.create(first_name: params['first_name'],
+#                          last_name: params['last_name'],
+#                          email: params['email'],
+#                          age: params['age'],
+#                          user_name: params['user_name'])
+ #   Gossip.create(author: my_user,
+#                  title: params['title'],
+ #                 text: params['text'])
   end
 
   # GET display a specific photo
