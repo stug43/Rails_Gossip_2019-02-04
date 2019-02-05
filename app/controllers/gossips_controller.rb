@@ -6,18 +6,17 @@ class GossipsController < ApplicationController
     @gossips = Gossip.all
   end
 	
-	def search
-	end
 	
-	def search_post
-		(Gossip.include_id?(:id.to_s.to_i) ? redirect_to "/gossips/#{params[:id].to_s}" : redirect_to "/error_404" )
-	end
+def search_post
+   if Gossip.include_id?(params[:id].to_s.to_i)  
+     redirect_to "/gossips/#{params[:id].to_s}"
+   else
+     redirect_to "/error_404"
+   end
+ end
 
   def search; end
 
-  def search_post
-    redirect_to "/gossips/#{params[:id]}"
-  end
 
   # Méthode qui crée un potin vide et l'envoie une view qui affiche le formulaire pour 'le remplir' (new.html.erb)
   def new; end
