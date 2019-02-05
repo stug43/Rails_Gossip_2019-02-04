@@ -5,6 +5,13 @@ class GossipsController < ApplicationController
   def index
     @gossips = Gossip.all
   end
+	
+	def search
+	end
+	
+	def search_post
+		(Gossip.include_id?(:id.to_s.to_i) ? redirect_to "/gossips/#{params[:id].to_s}" : redirect_to "/error_404" )
+	end
 
   def search; end
 
@@ -29,6 +36,14 @@ class GossipsController < ApplicationController
     #   Gossip.create(author: my_user,
     #                  title: params['title'],
     #                 text: params['text'])
+    my_user = User.create(first_name: params['first_name'],
+                          last_name: params['last_name'],
+                          email: params['email'],
+                          age: params['age'],
+                          user_name: params['user_name'])
+    Gossip.create(author: my_user,
+                  title: params['title'],
+                  text: params['text'])
   end
 
   # Méthode qui récupère le potin concerné et l'envoie à la view show (show.html.erb) pour affichage
