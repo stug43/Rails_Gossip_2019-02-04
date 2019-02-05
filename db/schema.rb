@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -12,55 +10,57 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20_190_204_121_102) do
+ActiveRecord::Schema.define(version: 2019_02_04_121102) do
+
   # These are extensions that must be enabled in order to support this database
-  enable_extension 'plpgsql'
+  enable_extension "plpgsql"
 
-  create_table 'commentaries', force: :cascade do |t|
-    t.bigint 'author_id'
-    t.bigint 'gossip_id'
-    t.text 'text'
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
-    t.index ['author_id'], name: 'index_commentaries_on_author_id'
-    t.index ['gossip_id'], name: 'index_commentaries_on_gossip_id'
+  create_table "commentaries", force: :cascade do |t|
+    t.bigint "author_id"
+    t.bigint "gossip_id"
+    t.text "text"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["author_id"], name: "index_commentaries_on_author_id"
+    t.index ["gossip_id"], name: "index_commentaries_on_gossip_id"
   end
 
-  create_table 'gossips', force: :cascade do |t|
-    t.bigint 'author_id'
-    t.string 'title'
-    t.text 'text'
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
-    t.index ['author_id'], name: 'index_gossips_on_author_id'
+  create_table "gossips", force: :cascade do |t|
+    t.bigint "author_id"
+    t.string "title"
+    t.text "text"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["author_id"], name: "index_gossips_on_author_id"
   end
 
-  create_table 'likes', force: :cascade do |t|
-    t.bigint 'author_id'
-    t.bigint 'gossip_id'
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
-    t.index ['author_id'], name: 'index_likes_on_author_id'
-    t.index ['gossip_id'], name: 'index_likes_on_gossip_id'
+  create_table "likes", force: :cascade do |t|
+    t.bigint "author_id"
+    t.bigint "gossip_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["author_id"], name: "index_likes_on_author_id"
+    t.index ["gossip_id"], name: "index_likes_on_gossip_id"
   end
 
-  create_table 'sub_commentaries', force: :cascade do |t|
-    t.bigint 'author_id'
-    t.bigint 'commentary_id'
-    t.text 'text'
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
-    t.index ['author_id'], name: 'index_sub_commentaries_on_author_id'
-    t.index ['commentary_id'], name: 'index_sub_commentaries_on_commentary_id'
+  create_table "sub_commentaries", force: :cascade do |t|
+    t.bigint "author_id"
+    t.bigint "commentary_id"
+    t.text "text"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["author_id"], name: "index_sub_commentaries_on_author_id"
+    t.index ["commentary_id"], name: "index_sub_commentaries_on_commentary_id"
   end
 
-  create_table 'users', force: :cascade do |t|
-    t.string 'first_name'
-    t.string 'last_name'
-    t.string 'email'
-    t.string 'user_name'
-    t.integer 'age'
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
+  create_table "users", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
+    t.string "email"
+    t.string "user_name"
+    t.integer "age"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
+
 end
