@@ -32,9 +32,9 @@ before_action :authenticate_user, only: [:show, :create, :update, :destroy]
 				redirect_to "/"
 	end
 
-  # GET display a specific photo
+  # Méthode qui récupère le potin concerné et l'envoie à la view show (show.html.erb) pour affichage
   def show
-    @gossip = Gossip.find("#{params[:id]}")
+    @gossip = Gossip.find(params[:id].to_s)
     @gossips = Gossip.all
     @id = :id.to_s
     @comments = @gossip.commentaries

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Rails.application.eager_load!
 models_array = [City, User, Gossip, Commentary, SubCommentary, Like]
 # Sets the locale to "France":

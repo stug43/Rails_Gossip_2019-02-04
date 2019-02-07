@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -13,7 +15,7 @@
 ActiveRecord::Schema.define(version: 2019_02_07_114105) do
 
   # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
+  enable_extension 'plpgsql'
 
   create_table "cities", force: :cascade do |t|
     t.string "name"
@@ -32,32 +34,32 @@ ActiveRecord::Schema.define(version: 2019_02_07_114105) do
     t.index ["gossip_id"], name: "index_commentaries_on_gossip_id"
   end
 
-  create_table "gossips", force: :cascade do |t|
-    t.bigint "author_id"
-    t.string "title"
-    t.text "text"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["author_id"], name: "index_gossips_on_author_id"
+  create_table 'gossips', force: :cascade do |t|
+    t.bigint 'author_id'
+    t.string 'title'
+    t.text 'text'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.index ['author_id'], name: 'index_gossips_on_author_id'
   end
 
-  create_table "likes", force: :cascade do |t|
-    t.bigint "author_id"
-    t.bigint "gossip_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["author_id"], name: "index_likes_on_author_id"
-    t.index ["gossip_id"], name: "index_likes_on_gossip_id"
+  create_table 'likes', force: :cascade do |t|
+    t.bigint 'author_id'
+    t.bigint 'gossip_id'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.index ['author_id'], name: 'index_likes_on_author_id'
+    t.index ['gossip_id'], name: 'index_likes_on_gossip_id'
   end
 
-  create_table "sub_commentaries", force: :cascade do |t|
-    t.bigint "author_id"
-    t.bigint "commentary_id"
-    t.text "text"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["author_id"], name: "index_sub_commentaries_on_author_id"
-    t.index ["commentary_id"], name: "index_sub_commentaries_on_commentary_id"
+  create_table 'sub_commentaries', force: :cascade do |t|
+    t.bigint 'author_id'
+    t.bigint 'commentary_id'
+    t.text 'text'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.index ['author_id'], name: 'index_sub_commentaries_on_author_id'
+    t.index ['commentary_id'], name: 'index_sub_commentaries_on_commentary_id'
   end
 
   create_table "users", force: :cascade do |t|
@@ -73,5 +75,4 @@ ActiveRecord::Schema.define(version: 2019_02_07_114105) do
     t.string "password_digest"
     t.index ["city_id"], name: "index_users_on_city_id"
   end
-
 end

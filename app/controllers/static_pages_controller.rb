@@ -5,6 +5,5 @@ class StaticPagesController < ApplicationController
 
   def team; end
 
-	def error; end
-
+  def error; end
 end
