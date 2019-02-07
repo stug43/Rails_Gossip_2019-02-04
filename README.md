@@ -1,4 +1,6 @@
 <h1> :bamboo: ATOMIA, a Facebook like app :bamboo: </h1>
+
+<p> Statut : en production https://first-attempt-due-to-thp.herokuapp.com/ </p>
 <h2> Versions </h2>
 <p>ruby : 2.5.1<br />
 rails : 5.2.2<br />
