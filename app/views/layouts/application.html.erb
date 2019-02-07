@@ -2,6 +2,7 @@
 <html>
   <head>
     <title>FullGossip</title>
+	<%= javascript_include_tag "application" %>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -30,9 +31,16 @@
 
       <a class="nav-item nav-link border border-success rounded" <%= link_to "Home",  root_path %></a>
 
-      <a class="nav-item nav-link border border-success rounded" <%= link_to "Team",  team_path %></a>
+			<a class="nav-item nav-link border border-success rounded" <%= link_to "Sign up",  new_user_path %></a>
 
+			<a class="nav-item nav-link border border-success rounded" <%= link_to "Team",  team_path %></a>
       <a class="nav-item nav-link border border-success rounded" <%= link_to "Contact",  contact_path %></a>
+<% if current_user then %>
+		<%= link_to session_path(session), method: :delete, class: "nav-item nav-link border border-success rounded" do
+"Se déconnecter" end %>
+<% else %>
+<%= link_to "/login", class: "nav-item nav-link border border-success rounded" do "Sign in" end %>
+<% end %>
 
     </div>
   </nav>

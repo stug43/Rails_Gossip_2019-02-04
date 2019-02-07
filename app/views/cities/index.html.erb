@@ -1,0 +1,51 @@
+<div class="container my-5">
+      <div class="row">
+          <div class="col-1">
+          </div>
+
+          <div class="col-10">
+
+
+            <div class="card align-items-center" >
+              <img class="card-img-top" src="https://nsa40.casimages.com/img/2019/02/07/190207102811303072.jpg"  alt="Card image cap">
+              <div class="card-body">
+                <h1 class="card-title text-center">The Gossip Project</h1>
+                <p class="card-text text-center">The Gossip Project répertorie tous les potins de THP</p>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="col-1">
+          </div>
+      </div>
+    </div>
+
+     <div class="container my-5">
+      <div class="row">
+          <div class="col-1">
+          </div>
+
+          <div class="col-10">
+
+            <ul class="list-group">
+              <li class="list-group-item d-flex justify-content-between align-items-center">
+                <strong> La liste de toutes les villes </strong>
+                <span class="badge badge-primary badge-pill"> <%= @cities.length %></span>
+              </li>
+
+              <% @cities.each_with_index do |city, index| %>
+              <li class="list-group-item d-flex justify-content-between align-items-center">
+                <span class="col"><span><%= link_to city.name, city_path((index+1).to_s) %></span></span>
+
+                <span class="col text-right"><span class="badge badge-primary badge-pill"><%= city.gossips.size %></span></span>
+              </li>
+              <% end %>
+            </ul>
+
+          </div>
+
+          <div class="col-1">
+</div>
+</div>
+</div>

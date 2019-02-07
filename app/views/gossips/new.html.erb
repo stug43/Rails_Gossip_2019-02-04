@@ -1,3 +1,20 @@
 <div class="container">
-<h1></h1>
-<p>Find me in app/views/gossips/new.html.erb</p>
+<h1>Create a new potin !</h1>
+<h2><sub>No efforts on the front, sorry i was sleeping yesterday</sub></h2>
+<p><form action='<%= gossips_path %>' method='POST'>
+		<input type='hidden' name='authenticity_token' value='<%= form_authenticity_token %>'>
+
+	<div class='form-group'>
+	<label for='title'>Titre</label>
+	<input type="sting" class="form-control" name='title' id="title" placeholder="Title">
+	</div>
+
+	<div class="form-group">
+    <label for="exampleTextarea">Corps du potin</label>
+    <textarea placeholder="Votre potin ici" class="form-control" name='text' id="exampleTextarea" rows="3"></textarea>
+  </div>
+
+<button type="submit" class="btn btn-primary">Submit</button>
+
+</form></p>
+</div>

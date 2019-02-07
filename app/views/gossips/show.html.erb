@@ -10,15 +10,16 @@
               <img class="card-img-top" src="https://images.unsplash.com/photo-1482356432770-3a99f07aba35?ixlib=rb-1.2.1&ix@id=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80"  alt="Card image cap">
               <div class="card-body">
                 <h1 class="card-title">Potin d'id <%= params[:id] %></h1>
-                <p class="card-text">Son auteur : <%= @gossip.author.user_name %> // Son contenu : <%= @gossip.text %></p>
+                <p class="card-text">Son auteur : <%= link_to "#{@gossip.author.user_name}", user_path %><br />Son titre : <%= @gossip.title %><br /> Son contenu : <%= @gossip.text %></p>
                 <p><a class="card-text" href="/"> Lien pour revenir à la page d'accueil</a></p>
-                 <p><a class="card-text" href="/@gossips/<%= @id %>/edit/"> Pour éditer le potin, c'est ici</a></p>
+                 <p><%= link_to "Pour éditer le potin, c'est ici", edit_gossip_path %></p>
+<p><a href=<%= "/gossips/#{params[:id].to_s}" %> data-confirm="Cette action est irréversible.", data-method="DELETE">Supprimer</a>
               </div>
             </div>
  
 
             <div class="card-body">
-              <a href="/@comments-of-@gossip-<%= @id %>/new/" class="card-link">Crée un commentaire !</a>
+              <%= link_to "Crée un commentaire", new_commentary_path(@gossip) %>
             </div>
 
           </div>
@@ -44,8 +45,7 @@
               <% @comments.each_with_index do |comment, index| %>
               <li class="list-group-item d-flex justify-content-between align-items-center">
                 <%= comment.text %>
-                
-                <span class="badge badge-primary badge-pill">par <%= comment.author.user_name %></span>
+                <span class="col text-right"><span class="badge badge-primary badge-pill">par <%= link_to comment.author.user_name, user_path(comment.author.id), {:style=>'color:#FFFFFF'} %> <%= "(#{comment.author.city.name})" %></span></span>
               </li>
               <% end %>
             </ul>

@@ -1,0 +1,77 @@
+<br>
+<div class="container">
+  <div class="row">
+    <div class="col-md-9">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-md-12 lead">User profile<hr></div>
+          </div>
+          <div class="row">
+			<div class="col-md-4 text-center">
+              <img class="img-circle avatar avatar-original" style="-webkit-user-select:none; 
+              display:block; margin:auto;" src="<%= @randomizer[rand(4)] %>">
+            </div>
+            <div class="col-md-8">
+              <div class="row">
+                <div class="col-md-12">
+                  <h1 class="only-bottom-margin"><%= User.find(params[:id]).user_name %></h1>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <span class="text-muted">Email:</span> <%= User.find(params[:id]).email %><br>
+                  <span class="text-muted">City:</span> <%= link_to User.find(params[:id]).city.name, city_path(User.find(params[:id]).city) %><br>
+                  <span class="text-muted">age:</span> <%= User.find(params[:id]).age %><br><br>
+                  <small class="text-muted">Created at: <%= User.find(params[:id]).created_at.to_time %></small>
+                </div>
+                <div class="col-md-6">
+                  <div class="activity-mini">
+                    <i class="glyphicon glyphicon-comment text-muted"></i> 
+                  </div>
+                  <div class="activity-mini">
+                    <i class="glyphicon glyphicon-thumbs-up text-muted"></i> 
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <hr>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+	<div class="row">
+          <div class="col-1">
+          </div>
+
+          <div class="col-10">
+
+            <ul class="list-group">
+              <li class="list-group-item d-flex justify-content-between align-items-center">
+                <strong> La liste de tous mes potins </strong>
+                <span class="badge badge-primary badge-pill"> <%= User.find(params[:id]).gossips.length %></span>
+              </li>
+
+              <% User.find(params[:id]).gossips.each_with_index do |gossip| %>
+              <li class="list-group-item d-flex justify-content-between align-items-center">
+                <%= link_to gossip.title, gossip_path(gossip.id.to_s) %>
+
+                <span class="badge badge-primary badge-pill"> <%= link_to "lien", "/gossips/#{gossip.id.to_s}", {:style=>'color:#FFFFFF'} %></span>
+              </li>
+              <% end %>
+            </ul>
+
+          </div>
+
+          <div class="col-1">
+          </div>
+        </div>
+
+
+
+</div>

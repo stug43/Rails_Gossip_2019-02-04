@@ -1,0 +1,24 @@
+<div class="container">
+<h1>Que serait une plateforme de gossiping sans commentaires? 😏</h1>
+<div class="card">
+  <div class="card-header">
+    Gossip n°<%= @gossip.id %> :
+  </div>
+  <div class="card-body">
+    <blockquote class="blockquote mb-0">
+      <p><%= @gossip.title %><br /><br /><%= @gossip.text %></p>
+      <footer class="blockquote-footer"><%= @gossip.author.first_name + " " + @gossip.author.last_name %> <cite title="Source Title"><%= @gossip.author.city.name %></cite></footer>
+    </blockquote>
+  </div>
+</div>
+<p><form action='<%= commentaries_path %>' method='POST'>
+    <input type='hidden' name='authenticity_token' value='<%= form_authenticity_token %>'>
+
+  <div class='form-group'>
+  <label for='title'>Texte :</label>
+  <textarea type="text" class="form-control" name='text' placeholder="Your commentary" rows="3"></textarea>
+  </div>
+<button type="submit" class="btn btn-primary">Submit</button>
+
+</form></p>
+</div>

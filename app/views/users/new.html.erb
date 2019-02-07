@@ -1,0 +1,60 @@
+<div class="container">
+<h1>Welcome</h1>
+<h2>Before you can add some gossips to the front page, you have to fill a 2 minutes formulary to let us know you  <sub>Because yes ! We're interested in you ^-^</sub></h2>
+<p><form action='<%= users_path %>' method='POST'>
+
+    <input type='hidden' name='authenticity_token' value="<%= form_authenticity_token %>">
+
+  <div class='form-group'>
+  <label for='title'>First name</label>
+  <input type="string" class="form-control" name='first_name' placeholder="John">
+  </div>
+
+  <div class='form-group'>
+  <label for='title'>Last name</label>
+  <input type="string" class="form-control" name='last_name' placeholder="Doe">
+  </div>
+
+    <div class="form-group">
+    <label for="exampleFormControlSelect1">City</label>
+    <select class="form-control" name="city_id">
+      <% City.all.each do |city| %>
+      <option value=<%= city.id %> ><%= city.name %></option>
+      <% end %>
+    </select>
+  </div>
+
+  <div class='form-group'>
+  <label for='title'>Username (A.K.A)</label>
+  <input type="string" class="form-control" name='user_name' placeholder="~Jdoe193~">
+  </div>
+
+  <div class='form-group'>
+  <label for='title'>Email</label>
+  <input type="string" class="form-control" name='email' placeholder="hacking@proj.ect">
+  </div>
+
+  <div class='form-group'>
+  <label for='title'>Age</label>
+  <input type="string" class="form-control" name='age' placeholder="27">
+  </div>
+
+	<div class="form-group">
+    <label for="exampleInputPassword1">Password</label>
+    <input type="password" name="password" class="form-control" placeholder="$723GabbKrs1^*5£5">
+  </div>
+
+	<div class="form-group">
+    <label for="exampleInputPassword1">Please confirm password</label>
+    <input type="password" class="form-control" name="password_confirmation" placeholder="$723GabbKrs1^*5£5">
+  </div>
+
+  <div class="form-group">
+    <label for="exampleTextarea">Description</label>
+    <textarea class="form-control" name='description' rows="3"></textarea>
+  </div>
+
+<button type="submit" class="btn btn-primary">Submit</button>
+
+</p>
+</div>

@@ -1,5 +1,5 @@
 Rails.application.eager_load!
-models_array = [User, Gossip, Commentary, SubCommentary, Like]
+models_array = [City, User, Gossip, Commentary, SubCommentary, Like]
 # Sets the locale to "France":
 Faker::Config.locale = 'fr'
 
@@ -23,7 +23,7 @@ puts '-' * 50
 puts
 
 
-models_items_count = Hash[ [['User', 20], ['Gossip', 50],
+models_items_count = Hash[ [['City', 10], ['User', 20], ['Gossip', 50],
                             ['Commentary', 100], ['SubCommentary', 40], ['Like', 300]] ]
 
 models_array.each do |model|
@@ -31,6 +31,10 @@ models_array.each do |model|
   models_items_count[model.name].times do
     i = 0
     case model.name
+		when 'City'
+			model.create(name: Faker::Nation.capital_city,
+									 zip_code: Faker::Number.number(5).to_s)
+
     when 'User'
       while true
         user_name = Faker::DragonBall.unique.character
@@ -38,10 +42,13 @@ models_array.each do |model|
        end
 
       model.create(first_name: Faker::Name.first_name,
+									 city: City.all.sample,
                    last_name: Faker::Name.last_name,
                    email: Faker::Internet.unique.email,
                    age: (1..89).to_a.sample,
-                   user_name: user_name)
+                   user_name: user_name,
+									 description: Faker::Lorem.words(90),
+									 password: Faker::Internet.password(13, 25, true, true))
 
     when 'Gossip'
       model.create(author: User.all.sample,

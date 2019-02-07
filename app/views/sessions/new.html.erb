@@ -1,0 +1,23 @@
+<!-- no additional media querie or css is required -->
+<div class="container">
+        <div class="row justify-content-center align-items-center" style="height:60vh">
+				<h1>Login</h1>
+            <div class="col-4">
+                <div class="card">
+                    <div class="card-body">
+                        <form action="/sessions" method='POST' autocomplete="off">
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="email" placeholder="email@email.email">
+                            </div>
+                            <input type='hidden' name='authenticity_token' value='<%= form_authenticity_token %>'>
+														<div class="form-group">
+                                <input type="password" class="form-control" name="password" placeholder="gal%I27k2o_oOxcg43">
+                            </div>
+														<small id="emailHelp" class="form-text text-muted">Enter an existing username or <%= link_to "sign up", new_user_path %></small>
+                            <button type="submit" class="btn btn-primary">login</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

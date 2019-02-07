@@ -1,4 +1,4 @@
-<h1 class='offset-md-5'>Akramsearch</h1>
+<h1 class='offset-md-5 mt-5'>Recherche de potin par ID</h1>
 <div class='container h-50'>
 <div class='row h-100 justify-content-center'>
 <form class="form-inline align-middle" action='<%= search_path %>' method='POST'>
@@ -9,7 +9,7 @@
   <div class="form-group mx-sm-3 mb-2">
     <label for="inputPassword2" class="sr-only">Password</label>
 		<input type='hidden' name='authenticity_token' value='<%= form_authenticity_token %>'>
-    <input type="password" name="id" class="form-control" id="inputPassword2" placeholder="Gossip n°.">
+    <input type="text" name="id" class="form-control" id="inputPassword2" placeholder="Gossip n°.">
   </div>
   <button type="submit" class="btn btn-primary mb-2">Chercher</button>
 </form>
